@@ -1,6 +1,8 @@
 <?php
 
 require_once("util/conexao.php");
+require_once("modelo/Copa.php");
+
 Class CopaDAO{
 
      private $conn;
