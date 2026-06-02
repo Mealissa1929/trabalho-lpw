@@ -6,6 +6,7 @@ require_once("dao/CopaDAO.php");
 
 $copa = new Copa("", "", "", "", "", "");
 $msgErro = "";
+$msgs = array();
 $ano = "";
 $sede = "";
 $campeao = "";
@@ -13,8 +14,6 @@ $confSede = "";
 $imagem = "";
 $qtdSele = "";
 
-
-// processamento do formulário
 if(isset($_POST['ano'])) {
 
     $ano = is_numeric($_POST['ano']) ? $_POST['ano'] : null;
@@ -26,9 +25,6 @@ if(isset($_POST['ano'])) {
 
     $copa = new Copa($ano, $sede, $campeao, $confSede, $imagem, $qtdSele);
 
-     //1.1- Validar os dados
-    $msgs = array();
-    
    if (empty($msgs)){
 
     $dao = new CopaDAO();
