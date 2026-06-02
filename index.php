@@ -62,6 +62,8 @@ if(isset($_POST['ano'])) {
 
     <h1>Cadastro de Copas do Mundo</h1>
 
+    <h3>Formulário</h3>
+
    <form action="" method="POST">
 
         <input type="number" placeholder="Informe o ano"
