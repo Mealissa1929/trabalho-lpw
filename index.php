@@ -30,34 +30,9 @@ if(isset($_POST['ano'])) {
 
     //1.1- Validar os dados
     $msgs = array();
-    if(!$titulo)
-        array_push($msgs, "Informe o título!");
-    elseif (strlen($titulo)<3)
-        array_push($msgs, "Informe um título com no mínimo 3 caracteres!");
-    elseif (strlen($titulo)>50)
-        array_push($msgs, "Informe um título com no máximo 50 caracteres!");
-
-    if(!$genero)
-        array_push($msgs, "Informe o gênero!");
-
-    if(!$qtdPag)
-        array_push($msgs, "Informe o número de páginas!");
-    else if($qtdPag<=0)
-        array_push($msgs, "Informe um número válido de páginas!");
-
-    if(!$autor)
-        array_push($msgs, "Informe o autor!");
-
-    $livroExiste = procurarLivro($titulo, $conexao);
-    if($livroExiste)
-         array_push($msgs, "Este livro já está registrado!");
     
     if (empty($msgs)){
     //2- Inserir o livro no banco de dados
-    $sql = "INSERT INTO livros (titulo, genero, qtd_paginas, autor)
-            Values (?,?,?,?)";
-    $stm = $conexao->prepare($sql);
-    $stm->execute([$titulo, $genero, $qtdPag, $autor]);
 
     //3- Redirecionar para a página de listagem
     header("location: index.php");
