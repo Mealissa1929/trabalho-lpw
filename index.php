@@ -1,14 +1,10 @@
 <?php
 
-//Exibir erros
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// configurações e requires
 
 require_once("util/Conexao.php");
 require_once("modelo/Copa.php");
 require_once("dao/CopaDAO.php");
-
-$conexao = Conexao::getConexao();
 
 $copa = new Copa("", "", "", "", "", "");
 $msgErro = "";
@@ -19,7 +15,10 @@ $confSede = "";
 $imagem = "";
 $qtdSele = "";
 
+
+// processamento do formulário
 if(isset($_POST['ano'])) {
+
     $ano = is_numeric($_POST['ano']) ? $_POST['ano'] : null;
     $sede = trim($_POST['sede']) ? trim($_POST['sede']) : null ;
     $campeao = trim($_POST['campeao']) ? trim($_POST['campeao']) : null ;
@@ -29,28 +28,41 @@ if(isset($_POST['ano'])) {
 
     $copa = new Copa($ano, $sede, $campeao, $confSede, $imagem, $qtdSele);
 
-    //1.1- Validar os dados
+     //1.1- Validar os dados
     $msgs = array();
     
     if (empty($msgs)){
     //2- Inserir o livro no banco de dados
 
     //3- Redirecionar para a página de listagem
-    header("location: index.php");
+    header("location: listagem.php");
     } else {
         //exibir as mensagens de erro
         $msgErro = implode("<br>",$msgs);
     }
 }
 
+}
 
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Copas do Mundo</title>
+</head>
+<body>
 
+    <nav>
+        <a href="index.php">Cadastro</a> |
+        <a href="listagem.php">Listagem</a>
+    </nav>
 
+    <hr>
 
+    <h1>Cadastro de Copas do Mundo</h1>
 
-    <h3>Formulário</h3>
-
-    <form action="" method="POST" onsubmit="return validarForm();">
+   <form action="" method="POST">
 
         <input type="number" placeholder="Informe o ano"
             name="ano" id="ano" value="<?=$copa->getAno()?>">
@@ -97,8 +109,6 @@ if(isset($_POST['ano'])) {
         <button>Gravar</button>
 
     </form>
-
-    <div style="color: red;"> <?=$msgErro?> </div>
 
 </body>
 </html>
