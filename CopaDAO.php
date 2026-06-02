@@ -10,15 +10,27 @@ Class CopaDAO{
     public function __construct() {
         $this->conn = Conexao::getConexao();
     }
-  public function listar() {
 
-        $sql = "SELECT * FROM copas ORDER BY ano";
-
-        $stm = $this->conn->prepare($sql);
-        $stm->execute();
-
-        return $stm->fetchAll();
+ public function listar() {
+    $sql = "SELECT * FROM copas ORDER BY ano";
+    $stm = $this->conn->prepare($sql);
+    $stm->execute();
+    
+    $copas = [];
+    while($row = $stm->fetch()) {
+        $copa = new Copa(
+            $row['ano'],
+            $row['sede'],
+            $row['campeao'],
+            $row['confederacao'],
+            $row['imagem'],
+            $row['quantidade']
+        );
+        $copa->setId($row['id']);
+        $copas[] = $copa;
     }
+    return $copas;
+}
 
     public function inserir(Copa $copa) {
 
