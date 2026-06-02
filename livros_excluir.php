@@ -1,23 +1,49 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+require_once("util/conexao.php");
+Class CopaDAO{
 
-require_once("util/Conexao.php");
+     private $conn;
 
-$conexao = Conexao::getConexao();
+    public function __construct() {
+        $this->conn = Conexao::getConexao();
+    }
+  public function listar() {
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+        $sql = "SELECT * FROM copas ORDER BY ano";
 
-    $sql = "DELETE FROM livros WHERE id = (?)";
-    $stm = $conexao->prepare($sql);
-    $stm->execute([$id]);
+        $stm = $this->conn->prepare($sql);
+        $stm->execute();
 
+        return $stm->fetchAll();
+    }
 
-    header("Location: livros.php");
-    exit;
-} else {
-    echo "ID inválido";
-    echo "<a href='livros.php'>Voltar</a>";
+    public function inserir(Copa $copa) {
+
+        $sql = "INSERT INTO copas
+                (ano, sede, campeao, confederacao_sede,
+                 quantidade_selecoes, imagem)
+                VALUES (?, ?, ?, ?, ?, ?)";
+
+        $stm = $this->conn->prepare($sql);
+
+        $stm->execute([
+            $copa->getAno(),
+            $copa->getSede(),
+            $copa->getCampeao(),
+            $copa->getConfederacaoSede(),
+            $copa->getQuantidadeSelecoes(),
+            $copa->getImagem()
+        ]);
+    }
+
+    public function excluir($id) {
+
+        $sql = "DELETE FROM copas WHERE id = ?";
+
+        $stm = $this->conn->prepare($sql);
+        $stm->execute([$id]);
+    }
+
 }
+
