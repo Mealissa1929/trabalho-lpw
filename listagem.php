@@ -3,6 +3,17 @@
 require_once("dao/CopaDAO.php");
 
 $dao = new CopaDAO();
+
+// Exclusão
+if(isset($_GET['excluir'])) {
+
+    $dao->excluir($_GET['excluir']);
+
+    header("location: listagem.php");
+    exit;
+}
+
+// Listagem
 $copas = $dao->listar();
 
 ?>
@@ -15,59 +26,68 @@ $copas = $dao->listar();
 </head>
 <body>
 
-<nav>
-    <a href="index.php">Cadastro</a> |
-    <a href="listagem.php">Listagem</a>
-</nav>
+    <nav>
+        <a href="index.php">Cadastro</a> |
+        <a href="listagem.php">Listagem</a>
+    </nav>
 
-<hr>
+    <hr>
 
-<h1>Copas Cadastradas</h1>
+    <h1>Copas Cadastradas</h1>
 
-<a href="index.php">Nova Copa</a>
+    <a href="index.php">Nova Copa</a>
 
-<table border="1">
+    <br><br>
 
-    <tr>
-        <th>ID</th>
-        <th>Ano</th>
-        <th>Sede</th>
-        <th>Campeão</th>
-        <th>Confederação</th>
-        <th>Quantidade</th>
-        <th>Imagem</th>
-        <th>Ações</th>
-    </tr>
+    <table border="1">
 
-    <?php foreach($copas as $c): ?>
+        <tr>
+            <th>ID</th>
+            <th>Ano</th>
+            <th>Sede</th>
+            <th>Campeão</th>
+            <th>Confederação</th>
+            <th>Quantidade de Seleções</th>
+            <th>Imagem</th>
+            <th>Ações</th>
+        </tr>
 
-    <tr>
-        <td><?= $c["id"] ?></td>
-        <td><?= $c["ano"] ?></td>
-        <td><?= $c["sede"] ?></td>
-        <td><?= $c["campeao"] ?></td>
-        <td><?= $c["confederacao"] ?></td>
-        <td><?= $c["quantidade"] ?></td>
+        <?php foreach($copas as $c): ?>
 
-        <td>
-            <img src="<?= $c["imagem"] ?>" width="100">
-        </td>
+        <tr>
+            <td><?= $c["id"] ?></td>
+            <td><?= $c["ano"] ?></td>
+            <td><?= $c["sede"] ?></td>
+            <td><?= $c["campeao"] ?></td>
+            <td><?= $c["confederacao"] ?></td>
+            <td><?= $c["quantidade"] ?></td>
 
-        <td>
-            <a href="copas_excluir.php?id=<?= $c['id'] ?>"
-               onclick="return confirm('Confirma a exclusão?')">
-               Excluir
-            </a>
-        </td>
-    </tr>
+            <td>
+                <?php if($c["imagem"]): ?>
+                    <img src="<?= $c["imagem"] ?>" width="100">
+                <?php endif; ?>
+            </td>
 
-    <?php endforeach; ?>
+            <td>
 
-</table>
+                <a href="listagem.php?excluir=<?= $c['id'] ?>"
+                   onclick="return confirm('Confirma a exclusão?')">
+                   Excluir
+                </a>
 
-<br>
+                |
 
-<a href="cards.php">Visualizar em Cards</a>
+                <a href="card.php?id=<?= $c['id'] ?>">
+                   Ver Card
+                </a>
+
+            </td>
+
+        </tr>
+
+        <?php endforeach; ?>
+
+    </table>
 
 </body>
 </html>
