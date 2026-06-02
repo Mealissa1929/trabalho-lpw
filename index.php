@@ -31,20 +31,22 @@ if(isset($_POST['ano'])) {
      //1.1- Validar os dados
     $msgs = array();
     
-    if (empty($msgs)){
-    //2- Inserir o livro no banco de dados
+   if (empty($msgs)){
 
-    //3- Redirecionar para a página de listagem
+    $dao = new CopaDAO();
+    $dao->inserir($copa);
+
     header("location: listagem.php");
+    exit;
+
     } else {
-        //exibir as mensagens de erro
-        $msgErro = implode("<br>",$msgs);
+
+    $msgErro = implode("<br>", $msgs);
+
     }
 }
-
-}
-
 ?>
+    
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
