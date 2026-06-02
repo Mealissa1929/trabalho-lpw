@@ -25,6 +25,15 @@ if(isset($_POST['ano'])) {
 
     $copa = new Copa($ano, $sede, $campeao, $confSede, $imagem, $qtdSele);
 
+    if(!$ano)
+    $msgs[] = "Informe o ano!";
+        else if($ano < 1930)
+    $msgs[] = "Não existiam Copas do Mundo antes de 1930!";
+        else if($ano % 4 != 2)
+    $msgs[] = "Informe um ano de Copa válido!";
+        else if($ano == 1942 || $ano == 1946)
+    $msgs[] = "Não houve Copa do Mundo neste ano!";
+
    if (empty($msgs)){
 
     $dao = new CopaDAO();
