@@ -10,6 +10,7 @@ require_once("dao/CopaDAO.php");
 
 $conexao = Conexao::getConexao();
 
+$copa = new Copa("", "", "", "", "", "");
 $msgErro = "";
 $ano = "";
 $sede = "";
