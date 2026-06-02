@@ -23,15 +23,13 @@ if(isset($_POST['ano'])) {
     $imagem = trim($_POST['imagem']) ? trim($_POST['imagem']) : null ;
     $qtdSele = is_numeric($_POST['quantidadeSelecoes']) ? $_POST['quantidadeSelecoes'] : null ;
 
-    $copa = new Copa($ano, $sede, $campeao, $confSede, $imagem, $qtdSele);
-
     $anoAtual = date("Y");
     
     if(!$ano)
      array_push($msgs, "Informe o ano!");
         else if($ano < 1930)
     array_push($msgs, "Não existiam Copas do Mundo antes de 1930!");
-        else if($ano % 4 != 2)
+        else if(($ano - 1930) % 4 != 0)
     array_push($msgs, "Informe um ano de Copa válido!");
         else if($ano == 1942 || $ano == 1946)
     array_push($msgs, "Não houve Copa do Mundo neste ano!");
@@ -93,6 +91,8 @@ if(isset($_POST['ano'])) {
 
 
    if (empty($msgs)){
+
+    $copa = new Copa($ano, $sede, $campeao, $confSede, $imagem, $qtdSele);
 
     $dao = new CopaDAO();
     $dao->inserir($copa);
