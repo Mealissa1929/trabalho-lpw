@@ -1,7 +1,5 @@
 <?php
 
-// configurações e requires
-
 require_once("util/Conexao.php");
 require_once("modelo/Copa.php");
 require_once("dao/CopaDAO.php");
@@ -82,7 +80,7 @@ if(isset($_POST['ano'])) {
         <br><br>
 
         <select name="confederacao" id="confederacao" >
-            <option value="">---Selecione a conefederação sede---</option>
+            <option value="">---Selecione a confederação sede---</option>
             <option value="U" <?= $copa->getConfederacaoSede() == 'U' ? 'selected' : ''?>>UEFA</option>
             <option value="CC" <?= $copa->getConfederacaoSede() == 'CC' ? 'selected' : ''?>>CONCACAF</option>
             <option value="CM" <?= $copa->getConfederacaoSede() == 'CM' ? 'selected' : ''?>>CONMEBOL</option>
