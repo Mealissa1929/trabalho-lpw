@@ -25,14 +25,72 @@ if(isset($_POST['ano'])) {
 
     $copa = new Copa($ano, $sede, $campeao, $confSede, $imagem, $qtdSele);
 
+    $anoAtual = date("Y");
+    
     if(!$ano)
-    $msgs[] = "Informe o ano!";
+     array_push($msgs, "Informe o ano!");
         else if($ano < 1930)
-    $msgs[] = "Não existiam Copas do Mundo antes de 1930!";
+    array_push($msgs, "Não existiam Copas do Mundo antes de 1930!");
         else if($ano % 4 != 2)
-    $msgs[] = "Informe um ano de Copa válido!";
+    array_push($msgs, "Informe um ano de Copa válido!");
         else if($ano == 1942 || $ano == 1946)
-    $msgs[] = "Não houve Copa do Mundo neste ano!";
+    array_push($msgs, "Não houve Copa do Mundo neste ano!");
+        else if($ano > $anoAtual){
+    array_push($msgs, "Espere a copa acontecer para adicionar!");
+}
+
+    if(!$sede){
+        array_push($msgs, "Informe a sede!");
+    }
+    else if(strlen($sede) < 3){
+        array_push($msgs, "A sede deve ter pelo menos 3 caracteres!");
+    }
+    else if(strlen($sede) > 50){
+        array_push($msgs, "A sede deve ter no máximo 50 caracteres!");
+    }
+
+    if(!$campeao){
+        array_push($msgs, "Informe o campeão!");
+    }
+    else if(strlen($campeao) < 3){
+        array_push($msgs, "O campeão deve ter pelo menos 3 caracteres!");
+    }
+    else if(strlen($campeao) > 50){
+        array_push($msgs, "O campeão deve ter no máximo 50 caracteres!");
+    }
+
+    if(!$confSede){
+        array_push($msgs, "Informe a confederação sede!");
+    }
+    else if(
+            $confSede != "U" &&
+            $confSede != "CC" &&
+            $confSede != "CM" &&
+            $confSede != "CA" &&
+            $confSede != "O" &&
+            $confSede != "A"){
+    array_push($msgs, "Confederação inválida!");
+}
+
+    if(!$imagem){
+        array_push($msgs, "Informe a imagem!");
+    }
+    else if(!filter_var($imagem, FILTER_VALIDATE_URL)){
+        array_push($msgs, "Informe um link válido de imagem!");
+    }
+
+    if(!$qtdSele){
+        array_push($msgs, "Informe a quantidade de seleções!");
+    }
+    else if(
+        $qtdSele != 13 &&
+        $qtdSele != 16 &&
+        $qtdSele != 24 &&
+        $qtdSele != 32 &&
+        $qtdSele != 48){
+    array_push($msgs, "Quantidade de seleções inválida!");
+}
+
 
    if (empty($msgs)){
 
@@ -102,6 +160,7 @@ if(isset($_POST['ano'])) {
             <option value="">---Selecione a quantidade de seleções---</option>
             <option value="13" <?= $copa->getQuantidadeSelecoes() == '13' ? 'selected' : ''?>>13</option>
             <option value="16" <?= $copa->getQuantidadeSelecoes() == '16' ? 'selected' : ''?>>16</option>
+            <option value="24" <?= $copa->getQuantidadeSelecoes() == '24' ? 'selected' : ''?>>24</option>
             <option value="32" <?= $copa->getQuantidadeSelecoes() == '32' ? 'selected' : ''?>>32</option>
             <option value="48" <?= $copa->getQuantidadeSelecoes() == '48' ? 'selected' : ''?>>48</option>
         </select>
