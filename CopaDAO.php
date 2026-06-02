@@ -21,8 +21,8 @@ Class CopaDAO{
     public function inserir(Copa $copa) {
 
         $sql = "INSERT INTO copas
-                (ano, sede, campeao, confederacao_sede,
-                 quantidade_selecoes, imagem)
+                (ano, sede, campeao, confederacao,
+                 quantidade, imagem)
                 VALUES (?, ?, ?, ?, ?, ?)";
 
         $stm = $this->conn->prepare($sql);
