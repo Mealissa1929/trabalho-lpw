@@ -112,5 +112,9 @@ if(isset($_POST['ano'])) {
 
     </form>
 
+    <div style="color:red;">
+        <?= $msgErro ?>
+    </div>
+
 </body>
 </html>
