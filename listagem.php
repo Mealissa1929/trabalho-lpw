@@ -15,6 +15,13 @@ $copas = $dao->listar();
 </head>
 <body>
 
+<nav>
+    <a href="index.php">Cadastro</a> |
+    <a href="listagem.php">Listagem</a>
+</nav>
+
+<hr>
+
 <h1>Copas Cadastradas</h1>
 
 <a href="index.php">Nova Copa</a>
