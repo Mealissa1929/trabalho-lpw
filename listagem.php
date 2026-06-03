@@ -6,9 +6,7 @@ $dao = new CopaDAO();
 
 // Exclusão
 if(isset($_GET['excluir'])) {
-
     $dao->excluir($_GET['excluir']);
-
     header("location: listagem.php");
     exit;
 }
@@ -28,11 +26,10 @@ $copas = $dao->listar();
 <body>
 
     <nav>
-        <a href="index.php">Cadastro</a> |
+        <a href="index.php">Cadastro</a>
+        <span>|</span>
         <a href="listagem.php">Listagem</a>
     </nav>
-
-    <hr>
 
     <h1>Copas Cadastradas</h1>
 
@@ -40,7 +37,7 @@ $copas = $dao->listar();
 
     <br><br>
 
-    <table border="1">
+    <table>
 
         <tr>
             <th>ID</th>
@@ -56,34 +53,31 @@ $copas = $dao->listar();
         <?php foreach($copas as $c): ?>
 
         <tr>
-            <td><?= $c["id"] ?></td>
-            <td><?= $c["ano"] ?></td>
-            <td><?= $c["sede"] ?></td>
-            <td><?= $c["campeao"] ?></td>
-            <td><?= $c["confederacao"] ?></td>
-            <td><?= $c["quantidade"] ?></td>
+            <td><?= $c->getId() ?></td>
+            <td><?= $c->getAno() ?></td>
+            <td><?= $c->getSede() ?></td>
+            <td><?= $c->getCampeao() ?></td>
+            <td><?= $c->getConfederacaoInt() ?></td>
+            <td><?= $c->getQuantidadeSelecoes() ?></td>
 
             <td>
-                <?php if($c["imagem"]): ?>
-                    <img src="<?= $c["imagem"] ?>" width="100">
+                <?php if($c->getImagem()): ?>
+                    <img src="<?= $c->getImagem() ?>" width="100">
                 <?php endif; ?>
             </td>
 
             <td>
-
-                <a href="listagem.php?excluir=<?= $c['id'] ?>"
+                <a href="listagem.php?excluir=<?= $c->getId() ?>"
                    onclick="return confirm('Confirma a exclusão?')">
                    Excluir
                 </a>
 
                 |
 
-                <a href="card.php?id=<?= $c['id'] ?>">
+                <a href="card.php?id=<?= $c->getId() ?>">
                    Ver Card
                 </a>
-
             </td>
-
         </tr>
 
         <?php endforeach; ?>
