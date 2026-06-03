@@ -1,19 +1,9 @@
 CREATE TABLE copas (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     ano INT,
     sede VARCHAR(50),
     campeao VARCHAR(50),
     confederacao VARCHAR(50),
-    imagem VARCHAR(100),
+    imagem TEXT,
     quantidade INT
-);
-
-CREATE TABLE copas (
-    id SERIAL PRIMARY KEY,
-    ano INTEGER,
-    sede VARCHAR(50),
-    campeao VARCHAR(50),
-    confederacao VARCHAR(50),
-    imagem VARCHAR(100),
-    quantidade INTEGER
 );
