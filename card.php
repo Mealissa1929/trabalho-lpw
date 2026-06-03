@@ -19,31 +19,51 @@ if(!$copa) {
 <head>
     <meta charset="UTF-8">
     <title>Card - Copa <?= $copa->getAno() ?></title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav>
-        <a href="index.php">Cadastro</a> |
+        <a href="index.php">Cadastro</a>
+        <span>|</span>
         <a href="listagem.php">Listagem</a>
     </nav>
 
-    <hr>
+    <div class="card-copa">
 
-    <h1>Copa do Mundo <?= $copa->getAno() ?></h1>
+        <div class="card-header">
+            <img src="<?= $copa->getImagem() ?>" alt="Imagem da Copa <?= $copa->getAno() ?>">
+            <h2>Copa <?= $copa->getAno() ?></h2>
+        </div>
 
-    <img src="<?= $copa->getImagem() ?>" width="200">
+        <div class="card-body">
+            <div class="card-row">
+                <span class="card-label">Ano</span>
+                <span class="card-value"><?= $copa->getAno() ?></span>
+            </div>
+            <div class="card-row">
+                <span class="card-label">Sede</span>
+                <span class="card-value"><?= $copa->getSede() ?></span>
+            </div>
+            <div class="card-row">
+                <span class="card-label">Campeão</span>
+                <span class="card-value"><?= $copa->getCampeao() ?></span>
+            </div>
+            <div class="card-row">
+                <span class="card-label">Confederação sede</span>
+                <span class="card-value"><?= $copa->getConfederacaoInt() ?></span>
+            </div>
+            <div class="card-row">
+                <span class="card-label">Seleções</span>
+                <span class="card-value"><?= $copa->getQuantidadeSelecoes() ?></span>
+            </div>
+        </div>
 
-    <br><br>
+        <div class="card-footer">
+            <a href="listagem.php">← Voltar para listagem</a>
+        </div>
 
-    <strong>Ano:</strong> <?= $copa->getAno() ?> <br>
-    <strong>Sede:</strong> <?= $copa->getSede() ?> <br>
-    <strong>Campeão:</strong> <?= $copa->getCampeao() ?> <br>
-    <strong>Confederação Sede:</strong> <?= $copa->getConfederacaoInt() ?> <br>
-    <strong>Quantidade de Seleções:</strong> <?= $copa->getQuantidadeSelecoes() ?> <br>
-
-    <br>
-
-    <a href="listagem.php">Voltar</a>
+    </div>
 
 </body>
 </html>
