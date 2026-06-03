@@ -4,7 +4,6 @@ require_once("util/Conexao.php");
 require_once("modelo/Copa.php");
 require_once("dao/CopaDAO.php");
 
-$copa = new Copa("", "", "", "", "", "");
 $msgErro = "";
 $msgs = array();
 $ano = "";
@@ -102,7 +101,6 @@ if(isset($_POST['ano'])) {
 
     } else {
        
-    $copa = new Copa($ano, $sede, $campeao, $confSede, $imagem, $qtdSele);
     $msgErro = implode("<br>", $msgs);
 
     }
@@ -133,45 +131,45 @@ if(isset($_POST['ano'])) {
    <form action="" method="POST">
 
         <input type="number" placeholder="Informe o ano"
-            name="ano" id="ano" value="<?=$copa->getAno()?>">
+            name="ano" id="ano" value="<?=$ano?>">
 
         <br><br>
 
         <input type="text" placeholder="Informe o país sede" 
-            name="sede" id="sede" value="<?=$copa->getSede()?>">
+            name="sede" id="sede" value="<?=$sede?>">
 
         <br><br>
 
              <input type="text" placeholder="Informe a seleção campeã" 
-            name="campeao" id="campeao" value="<?=$copa->getCampeao()?>">
+            name="campeao" id="campeao" value="<?=$campeao?>">
 
         <br><br>
 
         <select name="confederacao" id="confederacao" >
             <option value="">---Selecione a confederação sede---</option>
-            <option value="U" <?= $copa->getConfederacaoSede() == 'U' ? 'selected' : ''?>>UEFA</option>
-            <option value="CC" <?= $copa->getConfederacaoSede() == 'CC' ? 'selected' : ''?>>CONCACAF</option>
-            <option value="CM" <?= $copa->getConfederacaoSede() == 'CM' ? 'selected' : ''?>>CONMEBOL</option>
-            <option value="CA" <?= $copa->getConfederacaoSede() == 'CA' ? 'selected' : ''?>>CAF</option>
-            <option value="O" <?= $copa->getConfederacaoSede() == 'O' ? 'selected' : ''?>>OFC</option>
-            <option value="A" <?= $copa->getConfederacaoSede() == 'A' ? 'selected' : ''?>>AFC</option>
+            <option value="U" <?= $confSede == 'U' ? 'selected' : ''?>>UEFA</option>
+            <option value="CC" <?= $confSede == 'CC' ? 'selected' : ''?>>CONCACAF</option>
+            <option value="CM" <?= $confSede == 'CM' ? 'selected' : ''?>>CONMEBOL</option>
+            <option value="CA" <?= $confSede == 'CA' ? 'selected' : ''?>>CAF</option>
+            <option value="O" <?= $confSede == 'O' ? 'selected' : ''?>>OFC</option>
+            <option value="A" <?= $confSede == 'A' ? 'selected' : ''?>>AFC</option>
         </select>
 
         <br><br>
 
          <select name="quantidadeSelecoes" id="quantidadeSelecoes" >
             <option value="">---Selecione a quantidade de seleções---</option>
-            <option value="13" <?= $copa->getQuantidadeSelecoes() == '13' ? 'selected' : ''?>>13</option>
-            <option value="16" <?= $copa->getQuantidadeSelecoes() == '16' ? 'selected' : ''?>>16</option>
-            <option value="24" <?= $copa->getQuantidadeSelecoes() == '24' ? 'selected' : ''?>>24</option>
-            <option value="32" <?= $copa->getQuantidadeSelecoes() == '32' ? 'selected' : ''?>>32</option>
-            <option value="48" <?= $copa->getQuantidadeSelecoes() == '48' ? 'selected' : ''?>>48</option>
+            <option value="13" <?= $qtdSele == '13' ? 'selected' : ''?>>13</option>
+            <option value="16" <?= $qtdSele == '16' ? 'selected' : ''?>>16</option>
+            <option value="24" <?= $qtdSele == '24' ? 'selected' : ''?>>24</option>
+            <option value="32" <?= $qtdSele == '32' ? 'selected' : ''?>>32</option>
+            <option value="48" <?= $qtdSele == '48' ? 'selected' : ''?>>48</option>
         </select>
 
         <br><br>
 
         <input type="text" placeholder="Link da imagem de representação da copa" 
-            name="imagem" id="imagem" value="<?=$copa->getImagem()?>">
+            name="imagem" id="imagem" value="<?=$imagem?>">
 
         <br><br>
 
