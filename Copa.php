@@ -8,13 +8,14 @@ Class Copa{
     private string $imagem;
     private int $quantidadeSelecoes;
 
-    public function __construct($a, $s, $c, $con, $i, $q){
-        $this->ano = $a;
-        $this->sede = $s;
-        $this->campeao = $c;
-        $this->confederacaoSede = $con;
-        $this->imagem = $i;
-        $this->quantidadeSelecoes = $q;
+    public function __construct(int $ano, string $sede, string $campeao, string $confSede, string $imagem, int $qtdSelecoes)
+    {
+        $this->ano = $ano;
+        $this->sede = $sede;
+        $this->campeao = $campeao;
+        $this->confederacaoSede = $confSede;
+        $this->imagem = $imagem;
+        $this->quantidadeSelecoes = $qtdSelecoes;
     }
 
     public function getConfederacaoInt(){
