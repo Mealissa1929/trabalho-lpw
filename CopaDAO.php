@@ -50,6 +50,25 @@ Class CopaDAO{
             $copa->getImagem()
         ]);
     }
+public function buscarPorId($id) {
+    $sql = "SELECT * FROM copas WHERE id = ?";
+    $stm = $this->conn->prepare($sql);
+    $stm->execute([$id]);
+    $row = $stm->fetch();
+
+    if(!$row) return null;
+
+    $copa = new Copa(
+        $row['ano'],
+        $row['sede'],
+        $row['campeao'],
+        $row['confederacao'],
+        $row['imagem'],
+        $row['quantidade']
+    );
+    $copa->setId($row['id']);
+    return $copa;
+}
 
     public function excluir($id) {
 
