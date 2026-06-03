@@ -7,9 +7,9 @@
 }
 
 :root {
-    --verde-escuro: #1a4a2e;
-    --verde-medio: #2d7a4f;
-    --verde-claro: #e8f5ee;
+    --roxo-escuro: #2e1a4a;
+    --roxo-medio: #5a3d8a;
+    --roxo-claro: #f0eaf8;
     --dourado: #c8a94a;
     --dourado-claro: #f5e9c4;
     --branco: #ffffff;
@@ -20,13 +20,13 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #f0f4f1;
+    background-color: #f3f0f8;
     background-image: repeating-linear-gradient(
         0deg,
         transparent,
         transparent 40px,
-        rgba(45, 122, 79, 0.04) 40px,
-        rgba(45, 122, 79, 0.04) 80px
+        rgba(90, 61, 138, 0.04) 40px,
+        rgba(90, 61, 138, 0.04) 80px
     );
     color: #222;
     min-height: 100vh;
@@ -34,7 +34,7 @@ body {
 
 /* NAV */
 nav {
-    background-color: var(--verde-escuro);
+    background-color: var(--roxo-escuro);
     padding: 0 2rem;
     display: flex;
     align-items: center;
@@ -86,7 +86,7 @@ h1 {
     font-family: 'Oswald', sans-serif;
     font-size: 2rem;
     font-weight: 600;
-    color: var(--verde-escuro);
+    color: var(--roxo-escuro);
     letter-spacing: 0.03em;
     text-transform: uppercase;
     border-left: 5px solid var(--dourado);
@@ -111,7 +111,7 @@ form {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: var(--sombra);
-    border-top: 4px solid var(--verde-medio);
+    border-top: 4px solid var(--roxo-medio);
     max-width: 560px;
 }
 
@@ -134,8 +134,8 @@ input[type="text"]:focus,
 input[type="number"]:focus,
 select:focus {
     outline: none;
-    border-color: var(--verde-medio);
-    box-shadow: 0 0 0 3px rgba(45, 122, 79, 0.15);
+    border-color: var(--roxo-medio);
+    box-shadow: 0 0 0 3px rgba(90, 61, 138, 0.15);
     background: var(--branco);
 }
 
@@ -149,7 +149,7 @@ select {
 
 button,
 a.btn {
-    background-color: var(--verde-escuro);
+    background-color: var(--roxo-escuro);
     color: var(--branco);
     border: none;
     padding: 0.65rem 2rem;
@@ -166,7 +166,7 @@ a.btn {
 
 button:hover,
 a.btn:hover {
-    background-color: var(--verde-medio);
+    background-color: var(--roxo-medio);
     transform: translateY(-1px);
 }
 
@@ -191,7 +191,7 @@ div[style*="color:red"] {
 a[href="index.php"] {
     display: inline-block;
     background-color: var(--dourado);
-    color: var(--verde-escuro);
+    color: var(--roxo-escuro);
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
@@ -220,7 +220,7 @@ table {
 }
 
 table th {
-    background-color: var(--verde-escuro);
+    background-color: var(--roxo-escuro);
     color: var(--branco);
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
@@ -243,7 +243,7 @@ table tr:last-child td {
 }
 
 table tr:nth-child(even) {
-    background-color: var(--verde-claro);
+    background-color: var(--roxo-claro);
 }
 
 table tr:hover {
@@ -258,7 +258,7 @@ table img {
 
 /* LINKS DE AÇÃO NA TABELA */
 table a {
-    color: var(--verde-medio);
+    color: var(--roxo-medio);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.85rem;
@@ -266,7 +266,7 @@ table a {
 }
 
 table a:hover {
-    color: var(--verde-escuro);
+    color: var(--roxo-escuro);
 }
 
 table a[href*="excluir"] {
@@ -289,7 +289,7 @@ table a[href*="excluir"]:hover {
 }
 
 .card-copa .card-header {
-    background-color: var(--verde-escuro);
+    background-color: var(--roxo-escuro);
     padding: 1.5rem;
     text-align: center;
 }
@@ -340,7 +340,7 @@ table a[href*="excluir"]:hover {
 
 .card-copa .card-value {
     font-weight: 600;
-    color: var(--verde-escuro);
+    color: var(--roxo-escuro);
     text-align: right;
 }
 
@@ -351,7 +351,7 @@ table a[href*="excluir"]:hover {
 }
 
 .card-copa .card-footer a {
-    color: var(--verde-medio);
+    color: var(--roxo-medio);
     text-decoration: none;
     font-family: 'Oswald', sans-serif;
     font-size: 0.9rem;
@@ -361,7 +361,7 @@ table a[href*="excluir"]:hover {
 }
 
 .card-copa .card-footer a:hover {
-    color: var(--verde-escuro);
+    color: var(--roxo-escuro);
 }
 
 /* RESPONSIVO */
