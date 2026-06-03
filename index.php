@@ -119,7 +119,8 @@ if(isset($_POST['ano'])) {
 <body>
 
     <nav>
-        <a href="index.php">Cadastro</a> |
+        <a href="index.php">Cadastro</a>
+        <span>|</span>
         <a href="listagem.php">Listagem</a>
     </nav>
 
