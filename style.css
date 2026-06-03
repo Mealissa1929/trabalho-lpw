@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --verde-escuro: #1a4a2e;
+    --verde-medio: #2d7a4f;
+    --verde-claro: #e8f5ee;
+    --dourado: #c8a94a;
+    --dourado-claro: #f5e9c4;
+    --branco: #ffffff;
+    --cinza-claro: #f4f4f4;
+    --cinza-texto: #555;
+    --sombra: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f0f4f1;
+    background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        rgba(45, 122, 79, 0.04) 40px,
+        rgba(45, 122, 79, 0.04) 80px
+    );
+    color: #222;
+    min-height: 100vh;
+}
+
+/* NAV */
+nav {
+    background-color: var(--verde-escuro);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 56px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+nav::before {
+    content: '⚽';
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+}
+
+nav a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover {
+    background-color: rgba(255,255,255,0.12);
+    color: var(--dourado);
+}
+
+nav span {
+    color: rgba(255,255,255,0.3);
+}
+
+hr {
+    display: none;
+}
+
+/* CONTAINER PRINCIPAL */
+.container, main, body > *:not(nav) {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* TÍTULOS */
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--verde-escuro);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    border-left: 5px solid var(--dourado);
+    padding-left: 0.75rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+}
+
+h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    color: var(--cinza-texto);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* FORMULÁRIO */
+form {
+    background: var(--branco);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+    border-top: 4px solid var(--verde-medio);
+    max-width: 560px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #222;
+    background: var(--cinza-claro);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--verde-medio);
+    box-shadow: 0 0 0 3px rgba(45, 122, 79, 0.15);
+    background: var(--branco);
+}
+
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2rem;
+    cursor: pointer;
+}
+
+button,
+a.btn {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    border: none;
+    padding: 0.65rem 2rem;
+    border-radius: 6px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover,
+a.btn:hover {
+    background-color: var(--verde-medio);
+    transform: translateY(-1px);
+}
+
+button:active,
+a.btn:active {
+    transform: translateY(0);
+}
+
+/* MENSAGEM DE ERRO */
+div[style*="color:red"] {
+    color: #b91c1c !important;
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    max-width: 560px;
+}
+
+/* LINK "NOVA COPA" */
+a[href="index.php"] {
+    display: inline-block;
+    background-color: var(--dourado);
+    color: var(--verde-escuro);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: background 0.2s;
+}
+
+a[href="index.php"]:hover {
+    background-color: #b8973a;
+}
+
+/* TABELA DE LISTAGEM */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--branco);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    font-size: 0.9rem;
+}
+
+table th {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+    padding: 0.85rem 1rem;
+    text-align: left;
+}
+
+table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    color: #333;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+table tr:nth-child(even) {
+    background-color: var(--verde-claro);
+}
+
+table tr:hover {
+    background-color: var(--dourado-claro);
+    transition: background 0.15s;
+}
+
+table img {
+    border-radius: 4px;
+    display: block;
+}
+
+/* LINKS DE AÇÃO NA TABELA */
+table a {
+    color: var(--verde-medio);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+}
+
+table a:hover {
+    color: var(--verde-escuro);
+}
+
+table a[href*="excluir"] {
+    color: #b91c1c;
+}
+
+table a[href*="excluir"]:hover {
+    color: #7f1d1d;
+}
+
+/* CARD DA COPA */
+.card-copa {
+    background: var(--branco);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    overflow: hidden;
+    max-width: 420px;
+    margin: 2rem auto;
+    border-top: 6px solid var(--dourado);
+}
+
+.card-copa .card-header {
+    background-color: var(--verde-escuro);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-copa .card-header img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid var(--dourado);
+    display: block;
+    margin: 0 auto 1rem;
+}
+
+.card-copa .card-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6rem;
+    color: var(--dourado);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.card-copa .card-body {
+    padding: 1.5rem;
+}
+
+.card-copa .card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+.card-copa .card-row:last-child {
+    border-bottom: none;
+}
+
+.card-copa .card-label {
+    font-family: 'Oswald', sans-serif;
+    color: var(--cinza-texto);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.card-copa .card-value {
+    font-weight: 600;
+    color: var(--verde-escuro);
+    text-align: right;
+}
+
+.card-copa .card-footer {
+    padding: 1rem 1.5rem;
+    background: var(--cinza-claro);
+    text-align: center;
+}
+
+.card-copa .card-footer a {
+    color: var(--verde-medio);
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.card-copa .card-footer a:hover {
+    color: var(--verde-escuro);
+}
+
+/* RESPONSIVO */
+@media (max-width: 640px) {
+    nav {
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        padding: 1.25rem;
+    }
+
+    table {
+        font-size: 0.8rem;
+    }
+
+    table th, table td {
+        padding: 0.6rem 0.6rem;
+    }
+}
