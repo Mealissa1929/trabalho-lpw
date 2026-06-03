@@ -101,7 +101,8 @@ if(isset($_POST['ano'])) {
     exit;
 
     } else {
-
+       
+    $copa = new Copa($ano, $sede, $campeao, $confSede, $imagem, $qtdSele);
     $msgErro = implode("<br>", $msgs);
 
     }
